@@ -19,6 +19,7 @@
     # Light? --> a booly --> use the light to start/stop a loop? 
     # For loop? for i in l --> No, can't directly call self._list 
     # Use python tutor and small list to practice. 
+    
 
 # Method:
     # turn on the light

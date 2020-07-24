@@ -96,7 +96,8 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # set the light on for sorting
+        # Set the light on for sorting
+        # The light can initiate and stop a while loop. 
         self.set_light_on()
 
         # while the light is on run the conditional
