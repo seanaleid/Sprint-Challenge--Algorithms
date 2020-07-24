@@ -96,7 +96,7 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # set the light 
+        # set the light on for sorting
         self.set_light_on()
 
         # while the light is on run the conditional
@@ -116,16 +116,22 @@ class SortingRobot:
                     self.swap_item()
                     # print(self._item)
             
+            # when robot can't move right anymore, check to move left, and compare items (if item is None, that it the pointer to stop)
             while self.can_move_left() and self.compare_item() is not None:
                 self.move_left()
                 # print(self._list)
                 # print(self._position)
             
+            # when the above while loop breaks, we have hit None, swap items
             self.swap_item()
 
+            # check if I can move right, checking to see that robot is not at the end of the list
             if self.can_move_right():
+                # move right and start again, go back to 108
                 self.move_right() 
+            # if robot can't go right anymore, it is at position [-1]
             else:
+                # turn off the light to quit the while loop 
                 self.set_light_off()
 
 if __name__ == "__main__":
