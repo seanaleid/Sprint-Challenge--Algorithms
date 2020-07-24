@@ -3,7 +3,7 @@ class SortingRobot:
         """
         SortingRobot takes a list and sorts it.
         """
-        self._list = l          # The list the robot is tasked with sorting
+        self._list = [2,1,0]         # The list the robot is tasked with sorting
         self._item = None       # The item the robot is holding
         self._position = 0      # The list position the robot is at
         self._light = "OFF"     # The state of the robot's light
@@ -96,9 +96,31 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        while self.can_move_right() == True:
+            # print(f"you can move right")
+            # loop
+            self.swap_item()
+            self.move_right()
+            print("While can move r", self._light)
 
+            if self.compare_item() == 1:
+                self.set_light_on()
+                self.swap_item()
+                self.move_left()
+                self.swap_item()
+                self.move_right()
+                print("Copare == 1", self._item)
+                print("Compare == 1", self._position)
+                print("Compare == 1", self._list)
+            else:
+                self.move_left()
+                self.swap_item()
+                self.move_right()
+                print("Compare ! 1", self._item)
+                print("Compare ! 1", self._position)
+                print("Compare ! 1", self._list)
+                
+        
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
@@ -109,4 +131,4 @@ if __name__ == "__main__":
     robot = SortingRobot(l)
 
     robot.sort()
-    print(robot._list)
+    print("You list is", robot._list)
