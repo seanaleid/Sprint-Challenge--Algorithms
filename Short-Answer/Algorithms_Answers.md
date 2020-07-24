@@ -2,7 +2,9 @@
 
 ## Exercise I
 
-a) Thr urn time is O(n^c) - Polynomial because it takes more steps the larger n gets. We have to multiply n*n until we meet the condition.
+a) The run time is O(n^c) - Polynomial because it takes more steps the larger n gets. We have to multiply n*n until we meet the condition.
+
+X O(n)
 
 
 b) The run time is O(n log n) - Linearithmic because j is less than n. J cannot be applied to every i if i starts at 1. The inner loop does not initialize until i is greater than 1. 
