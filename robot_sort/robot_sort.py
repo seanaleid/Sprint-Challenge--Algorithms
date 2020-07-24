@@ -3,7 +3,7 @@ class SortingRobot:
         """
         SortingRobot takes a list and sorts it.
         """
-        self._list = [2,1,0]         # The list the robot is tasked with sorting
+        self._list = l         # The list the robot is tasked with sorting
         self._item = None       # The item the robot is holding
         self._position = 0      # The list position the robot is at
         self._light = "OFF"     # The state of the robot's light
@@ -96,30 +96,64 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
+        # Using arr = [2, 1, 0] --> small example
+        # Start at arr[0], if we can move right,
         while self.can_move_right() == True:
-            # print(f"you can move right")
-            # loop
+            # swap items to compare arr[0] num to arr[1] num
             self.swap_item()
+            # move robot to the next position
             self.move_right()
             print("While can move r", self._light)
 
+            # if robot's num is > arr[1]
             if self.compare_item() == 1:
+                # turn on the light, make True
                 self.set_light_on()
+                # swap items
                 self.swap_item()
+                # move back
                 self.move_left()
+                # swap items again, now arr[0] and arr[1] are sorted
                 self.swap_item()
+                # move right to start over again
                 self.move_right()
-                print("Copare == 1", self._item)
+                print("Compare == 1", self._item)
                 print("Compare == 1", self._position)
                 print("Compare == 1", self._list)
+            # is robot's num is < arr[1]
             else:
+                # go back
                 self.move_left()
+                # swap/replace the item b/c arr[0] and arr[1] were already sorted
                 self.swap_item()
+                # move right to increment 1
                 self.move_right()
                 print("Compare ! 1", self._item)
                 print("Compare ! 1", self._position)
                 print("Compare ! 1", self._list)
-                
+        
+        # Robot has reached the end of the list, can't move on any more
+        # Light is on 
+        while self.can_move_left == True:
+            # need to move all the way back
+            while self.can_move_left():
+                # reset position to the beginning
+                self.move_left()
+                print("Move L", self._item)
+                print("Move L", self._position)
+                print("Move L", self._list)
+                self.sort()
+        
+        # need to reset the light to beginning state
+        # if self.light_is_on() == True:
+        #     # turn off the light 
+        #     self.set_light_off()
+        #     # call the mehtod again to run through the code
+        #     self.sort()
+        # else:
+        #     return self._list
+
+
         
 
 if __name__ == "__main__":
